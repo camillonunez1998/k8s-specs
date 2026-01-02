@@ -18,18 +18,18 @@ spec:
     spec:
       containers:
       - name: db
-        image: mongo:3.3
-        command: ["mongod"]
-        args: ["--rest", "--httpinterface"]
+        image: mongo:7.0
+        # command: ["mongod"]
+        # args: ["--rest", "--httpinterface"]
         ports:
         - containerPort: 28017
           protocol: TCP
       - name: api
-        image: vfarcic/go-demo-2
+        image: nginx:alpine
         env:
         - name: DB
           value: localhost
-        livenessProbe:
-          httpGet:
-            path: /demo/hello
-            port: 8080
+        # livenessProbe:
+        #   httpGet:
+        #     path: /demo/hello
+        #     port: 8080
